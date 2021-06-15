@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class OrderController extends AbstractController
 {
+    /**
+     * @var OrderRepository
+     */
     private $repository;
 
     public function __construct(OrderRepository $repository)
