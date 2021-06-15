@@ -21,8 +21,20 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
     
     public function __invoke(OrderPlacedMessage $message)
     {
-        echo 'Order placed';
+        echo 'Order placed: ' . $message->getId();
 
-        // TODO: fetch entity + update status
+        // fetch entity
+        $entity = $this->repository->find($message->getId());
+
+        if ($entity) {
+
+            // update status
+            $entity->setStatus("handled");
+            $this->repository->save($entity);
+        }
+        else {
+            // TODO Handle error!
+        }
+
     }
 }
