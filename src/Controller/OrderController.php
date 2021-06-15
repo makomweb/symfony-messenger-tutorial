@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Order;
 use App\OrderConfirmationEmail;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,6 +31,11 @@ class OrderController extends AbstractController
 
         // TODO: Create a new Order entity with status initiated + persist it!
 
+        $order = new Order();
+        $order->setName("XYZ");
+        $order->setStatus("initial");
+
+        $this->repository->save($order);
         return new Response('Your order has been placed!');
     }
 
