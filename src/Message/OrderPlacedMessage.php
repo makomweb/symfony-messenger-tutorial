@@ -3,7 +3,7 @@
 namespace App\Message;
 
 
-class OrderConfirmationEmail
+class OrderPlacedMessage
 {
     private $id;
 

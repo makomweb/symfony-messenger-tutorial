@@ -3,12 +3,12 @@
 namespace App\MessageHandler;
 
 
-use App\Message\OrderConfirmationEmail;
+use App\Message\OrderPlacedMessage;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-class OrderConfirmationEmailHandler implements MessageHandlerInterface
+class OrderPlacedMessageHandler implements MessageHandlerInterface
 {
-    public function __invoke(OrderConfirmationEmail $email)
+    public function __invoke(OrderPlacedMessage $message)
     {
         // Query
 

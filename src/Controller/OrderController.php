@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Order;
-use App\Message\OrderConfirmationEmail;
+use App\Message\OrderPlacedMessage;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +36,7 @@ class OrderController extends AbstractController
         $id = $this->repository->save($order);
 
         // Dispatch a message
-        $bus->dispatch(new OrderConfirmationEmail($id));
+        $bus->dispatch(new OrderPlacedMessage($id));
 
         return $this->redirectToRoute('index');
     }
