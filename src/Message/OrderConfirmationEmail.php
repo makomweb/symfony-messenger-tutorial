@@ -3,7 +3,7 @@
 namespace App;
 
 
-class AttendConfirmationEmail
+class OrderConfirmationEmail
 {
     private $id;
 
