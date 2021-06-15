@@ -27,15 +27,15 @@ class OrderController extends AbstractController
      */
     public function placeOrder(MessageBusInterface $bus) : Response
     {
-        $bus->dispatch(new OrderConfirmationEmail(1));
-
         // TODO: Create a new Order entity with status initiated + persist it!
 
         $order = new Order();
         $order->setName("XYZ");
         $order->setStatus("initial");
 
-        $this->repository->save($order);
+        $id = $this->repository->save($order);
+
+        $bus->dispatch(new OrderConfirmationEmail($id));
 
         return $this->redirectToRoute('index');
     }

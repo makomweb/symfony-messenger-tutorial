@@ -48,9 +48,11 @@ class OrderRepository extends ServiceEntityRepository
     }
     */
 
-    public function save(Order $order)
+    public function save(Order $order): int
     {
         $this->_em->persist($order);
         $this->_em->flush();
+
+        return $order->getId();
     }
 }
