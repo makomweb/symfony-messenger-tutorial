@@ -10,13 +10,8 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
 {
     public function __invoke(OrderPlacedMessage $message)
     {
-        // Query
+        echo 'Order placed';
 
-        // Create email
-
-        // Send email
-        echo 'Sending email now ...';
-
-        // .. other stuff which takes long
+        // TODO: fetch entity + update status
     }
 }
