@@ -36,7 +36,8 @@ class OrderController extends AbstractController
         $order->setStatus("initial");
 
         $this->repository->save($order);
-        return new Response('Your order has been placed!');
+
+        return $this->redirectToRoute('index');
     }
 
     /**
