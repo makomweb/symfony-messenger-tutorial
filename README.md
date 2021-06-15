@@ -26,3 +26,13 @@
 > composer require symfony/orm-pack
 > composer require --dev symfony/maker-bundle
 ~~~
+
+## Create a new entity "Order"
+
+~~~bash
+> php bin/console make:entity
+~~~
+
+With the properties:
+- name | string | 255 | not null
+- status | string | 255 | not null
