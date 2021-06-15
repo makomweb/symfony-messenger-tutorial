@@ -3,7 +3,7 @@
 namespace App\MessageHandler;
 
 
-use App\OrderConfirmationEmail;
+use App\Message\OrderConfirmationEmail;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 class OrderConfirmationEmailHandler implements MessageHandlerInterface
