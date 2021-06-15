@@ -44,3 +44,10 @@ php bin/console doctrine:database:create
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ~~~
+
+## Show orders
+
+~~~bash
+# to install TWIG view rendering engine
+> composer require twig 
+~~~

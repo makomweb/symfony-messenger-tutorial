@@ -35,6 +35,6 @@ class OrderController extends AbstractController
     {
         $orders = $this->repository->findAll();
 
-        
+
     }
 }
