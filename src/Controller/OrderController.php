@@ -24,17 +24,24 @@ class OrderController extends AbstractController
      * @param MessageBusInterface $bus
      * @return Response
      */
-    public function placeOrder(MessageBusInterface $bus)
+    public function placeOrder(MessageBusInterface $bus) : Response
     {
         $bus->dispatch(new OrderConfirmationEmail(1));
+
+        // TODO: Create a new Order entity with status initiated + persist it!
 
         return new Response('Your order has been placed!');
     }
 
-    public function index()
+    /**
+     * @Route("/index", name="index")
+     */
+    public function index() : Response
     {
         $orders = $this->repository->findAll();
 
-
+        return $this->render('Order/index.html.twig', [
+            'orders' => $orders,
+        ]);
     }
 }
