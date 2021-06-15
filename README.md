@@ -1,5 +1,7 @@
 # Tutorial for using the Symfony Messenger component
 
+![image](sequence-diagram-handle-order.png)
+
 ## Create a new project with dependency to Messenger
 
 ~~~bash
