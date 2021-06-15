@@ -36,3 +36,10 @@
 With the properties:
 - name | string | 255 | not null
 - status | string | 255 | not null
+
+## Create the database + create migration
+
+~~~bash
+php bin/console doctrine:database:create
+php bin/console make:migration
+~~~
