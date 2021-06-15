@@ -26,15 +26,15 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
         // fetch entity
         $entity = $this->repository->find($message->getId());
 
-        if ($entity) {
-
+        if ($entity)
+        {
             // update status
             $entity->setStatus("handled");
             $this->repository->save($entity);
         }
-        else {
+        else
+        {
             // TODO Handle error!
         }
-
     }
 }

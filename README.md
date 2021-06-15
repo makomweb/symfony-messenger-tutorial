@@ -51,3 +51,7 @@ php bin/console doctrine:migrations:migrate
 # to install TWIG view rendering engine
 > composer require twig 
 ~~~
+
+## Consume message asynchronously
+
+`symfony console messenger:consume async -vv`
