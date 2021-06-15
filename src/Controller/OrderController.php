@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Order;
-use App\OrderConfirmationEmail;
+use App\Message\OrderConfirmationEmail;
 use App\Repository\OrderRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
