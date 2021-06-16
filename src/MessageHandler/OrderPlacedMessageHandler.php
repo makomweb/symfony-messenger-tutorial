@@ -21,7 +21,7 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
     
     public function __invoke(OrderPlacedMessage $message)
     {
-        echo 'Order placed: ' . $message->getId();
+        echo 'Order placement received: ' . $message->getId();
 
         // fetch entity
         $entity = $this->repository->find($message->getId());
