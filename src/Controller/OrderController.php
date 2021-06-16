@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Order;
 use App\Message\OrderPlacedMessage;
 use App\Repository\OrderRepository;
@@ -10,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Uid\Uuid;
 
 class OrderController extends AbstractController
 {
@@ -32,7 +32,9 @@ class OrderController extends AbstractController
     {
         // Create a new order with status initial
         $order = new Order();
-        $order->setName("XYZ");
+
+        $uuid = Uuid::v4();        
+        $order->setName($uuid->toRfc4122()); //("XYZ");
         $order->setStatus("initial");
 
         // Persist it
