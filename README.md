@@ -17,29 +17,38 @@
 > composer install
 ~~~
 
-### 3. Start RabbitMQ via docker
-
-~~~bash
-> docker-composer up -d
-~~~
-
-### 4. Start Symfony Development Server
-
-~~~bash
-> symfony server:start -d
-~~~
-
-### 5. Set up the database
+### 3. Set up the database
 
 ~~~bash
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 ~~~
 
-### 6. Access the app 
+### 4. Start RabbitMQ via docker
+
+~~~bash
+> docker-composer up -d
+~~~
+
+### 5. Start Symfony Development Server
+
+~~~bash
+> symfony server:start -d
+~~~
+
+### 6. Start the message consumer
+
+~~~bash
+> php bin/console messenger:consume async -vv
+~~~
+
+### 7. Access the app 
 
 Your app is runnint locally under [https://127.0.0.1:8000](https://127.0.0.1:8000)
 
+### 8. Access the RabbitMQ admin console 
+
+Your app is runnint locally under [http://guest:guest@127.0.0.1:15672](http://guest:guest@127.0.0.1:15672)
 
 # Learnings
 
