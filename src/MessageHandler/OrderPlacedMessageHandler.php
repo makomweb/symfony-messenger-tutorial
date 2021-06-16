@@ -23,6 +23,9 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
     {
         echo 'Order placement received: ' . $message->getId();
 
+        // Fake being busy.
+        sleep(1);
+
         // fetch entity
         $entity = $this->repository->find($message->getId());
 
