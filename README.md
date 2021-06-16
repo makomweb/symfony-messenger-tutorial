@@ -2,6 +2,47 @@
 
 ![image](sequence-diagram-handle-order.png)
 
+## Steps
+
+### 1. Clone the repo
+
+~~~bash
+> git clone git@github.com:makomweb/symfony-messenger-tutorial.git
+~~~
+
+### 2. Composer install
+
+~~~bash
+> cd <symfony-messenger-tutorial>
+> composer install
+~~~
+
+### 3. Start RabbitMQ via docker
+
+~~~bash
+> docker-composer up -d
+~~~
+
+### 4. Start Symfony Development Server
+
+~~~bash
+> symfony server:start -d
+~~~
+
+### 5. Set up the database
+
+~~~bash
+php bin/console doctrine:database:create
+php bin/console doctrine:schema:update --force
+~~~
+
+### 6. Access the app 
+
+Your app is runnint locally under [https://127.0.0.1:8000](https://127.0.0.1:8000)
+
+
+# Learnings
+
 ## Create a new project with dependency to Messenger
 
 ~~~bash
