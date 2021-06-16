@@ -36,14 +36,18 @@
         </table>
     </div>
 
-    <div class="mb-2 p-2 bg-white">
-        <a href="{{ path('order') }}"
-           class="btn btn-outline-primary btn-sm">Place order</a>
-    </div>
+    <div class="text-center">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <div class="mb-2 p-2 bg-white">
+                <a href="{{ path('order') }}"
+                class="btn btn-outline-primary btn-sm">Place order</a>
+            </div>
 
-    <div class="mb-2 p-2 bg-white">
-        <a href="{{ path('clear') }}"
-           class="btn btn-outline-primary btn-sm">Clear all</a>
+            <div class="mb-2 p-2 bg-white">
+                <a href="{{ path('clear') }}"
+                class="btn btn-outline-danger btn-sm">Clear all</a>
+            </div>
+        </div>
     </div>
 </div>
 
