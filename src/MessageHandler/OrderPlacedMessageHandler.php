@@ -32,9 +32,7 @@ class OrderPlacedMessageHandler implements MessageHandlerInterface
             $entity->setStatus("handled");
             $this->repository->save($entity);
         }
-        else
-        {
-            // TODO Handle error!
-        }
+
+        // TODO Handle errors which might occur during handling the message!
     }
 }
