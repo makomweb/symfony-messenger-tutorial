@@ -57,3 +57,12 @@ php bin/console doctrine:migrations:migrate
 ## Consume message asynchronously
 
 `symfony console messenger:consume async -vv`
+
+## Add RabbitMQ
+
+RabbitMQ is part of the docker-compose inside this repo.
+
+You can start a docker container with `docker-compose up -d`.
+
+After the container is up you can access the webfrontend via
+http://guest:guest@localhost:15672.
