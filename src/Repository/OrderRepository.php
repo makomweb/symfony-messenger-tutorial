@@ -55,4 +55,14 @@ class OrderRepository extends ServiceEntityRepository
 
         return $order->getId();
     }
+    
+    public function removeOrders(array $orders)
+    {
+        foreach ($orders as $order)
+        {
+            $this->_em->remove($order);
+        }
+        
+        $this->_em->flush();
+    }
 }

@@ -57,4 +57,16 @@ class OrderController extends AbstractController
             'orders' => $orders,
         ]);
     }
+
+    /**
+     * @Route("/clear", name="clear")
+     */
+    public function clear() : Response
+    {
+        $orders = $this->repository->findAll();
+
+        $this->repository->removeOrders($orders);
+
+        return $this->redirectToRoute('index');
+    }
 }
