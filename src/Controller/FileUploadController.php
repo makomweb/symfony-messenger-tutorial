@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\FileUpload;
+use App\Message\FileUploadMessage;
 use App\Repository\FileUploadRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use App\Service\FileUploader;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
@@ -18,14 +20,17 @@ class FileUploadController extends AbstractController
      * @param FileUploader $uploader
      * @param LoggerInterface $logger
      * @param FileUploadRepository $repository
+     * @param MessageBusInterface $bus
      */
     public function __construct(FileUploader $uploader,
         LoggerInterface $logger,
-        FileUploadRepository $repository)
+        FileUploadRepository $repository,
+        MessageBusInterface $bus)
     {
         $this->uploader = $uploader;
         $this->logger = $logger;
         $this->repository = $repository;
+        $this->bus = $bus;
     }
 
     /**
@@ -76,7 +81,8 @@ class FileUploadController extends AbstractController
             $upload = new FileUpload();
             $upload->setName($filename);
             $upload->setStatus("initial");
-            $this->repository->save($upload);
+            $id = $this->repository->save($upload);
+            $this->bus->dispatch(new FileUploadMessage($id));
         }
 
         return $this->redirectToRoute('upload');

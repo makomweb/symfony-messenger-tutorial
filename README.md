@@ -44,11 +44,11 @@ php bin/console doctrine:schema:update --force
 
 ### 7. Access the app 
 
-Your app is runnint locally under [https://127.0.0.1:8000](https://127.0.0.1:8000)
+Your app is running locally under [https://127.0.0.1:8000](https://127.0.0.1:8000)
 
 ### 8. Access the RabbitMQ admin console 
 
-Your app is runnint locally under [http://guest:guest@127.0.0.1:15672](http://guest:guest@127.0.0.1:15672)
+Your app is running locally under [http://guest:guest@127.0.0.1:15672](http://guest:guest@127.0.0.1:15672)
 
 # Learnings
 
