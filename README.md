@@ -128,3 +128,9 @@ http://guest:guest@localhost:15672.
 
 - `php bin/console make:migration`
 - `php bin/console doctrine:migrations:migrate`
+
+# Create DB + create Schema
+
+- `php bin/console doctrine:database:create`
+- `php bin/console doctrine:schema:create`
+- `php bin/console doctrine:schema:update --force`

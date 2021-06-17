@@ -4,17 +4,51 @@
 
 {% block body %}
 
-    <form action="{{ path('do-upload') }}" method="post" enctype="multipart/form-data">
+    <div class="container">
 
-        <input type="hidden" name="token" value="{{ csrf_token('upload') }}" />
+        <div class="mb-2 p-2 bg-white">
 
-        <div>
-            <label for="myfile">File to upload:</label>
-            <input type="file" name="myfile" id="myfile">
+            <table class="table table-sm table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for upload in uploads %}
+                <tr>
+                    <td>{{ upload.id }}</td>
+                    <td>{{ upload.name }}</td>
+                    <td>
+                    {% if upload.status == "initial" %}
+                        <span class="badge badge-warning">{{ upload.status }}</span>
+                    {% elseif order.status == "handled" %}                
+                        <span class="badge badge-success">{{ upload.status }}</span>
+                    {% else %}                
+                        <span class="badge badge-primary">{{ upload.status }}</span>
+                    {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
+        
+        <form action="{{ path('do-upload') }}" method="post" enctype="multipart/form-data">
 
-        <button type="submit">Send</button>
-    
-    </form>
+            <input type="hidden" name="token" value="{{ csrf_token('upload') }}" />
+
+            <div>
+                <label for="myfile">File to upload:</label>
+                <input type="file" name="myfile" id="myfile">
+            </div>
+
+            <button type="submit">Send</button>
+        
+        </form>
+
+    </div>
 
 {% endblock %}

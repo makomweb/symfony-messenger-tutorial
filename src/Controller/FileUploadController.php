@@ -2,23 +2,30 @@
 
 namespace App\Controller;
 
+use App\Entity\FileUpload;
+use App\Repository\FileUploadRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\FileUploader;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Uid\Uuid;
 
 class FileUploadController extends AbstractController
 {
     /**
      * @param FileUploader $uploader
      * @param LoggerInterface $logger
+     * @param FileUploadRepository $repository
      */
-    public function __construct(FileUploader $uploader, LoggerInterface $logger)
+    public function __construct(FileUploader $uploader,
+        LoggerInterface $logger,
+        FileUploadRepository $repository)
     {
         $this->uploader = $uploader;
         $this->logger = $logger;
+        $this->repository = $repository;
     }
 
     /**
@@ -26,7 +33,11 @@ class FileUploadController extends AbstractController
      */
     public function index()
     {
-        return $this->render('file_upload/index.html.twig');
+        $uploads = $this->repository->findAll();
+
+        return $this->render('file_upload/index.html.twig', [
+            'uploads' => $uploads,
+        ]);
     }
 
     /**
@@ -55,10 +66,26 @@ class FileUploadController extends AbstractController
                Response::HTTP_UNPROCESSABLE_ENTITY, ['content-type' => 'text/plain']);
         }
 
-        $filename = $file->getClientOriginalName();
+        $filename = $this->getUniqueFileName(
+            $file->getClientOriginalName()
+        );
+
         $this->uploader->upload($uploadDir, $file, $filename);
 
-        return new Response("File uploaded",  Response::HTTP_OK,
-            ['content-type' => 'text/plain']);
+        {
+            $upload = new FileUpload();
+            $upload->setName($filename);
+            $upload->setStatus("initial");
+            $this->repository->save($upload);
+        }
+
+        return $this->redirectToRoute('upload');
+    }
+
+    private function getUniqueFileName(string $filename) {
+
+        $uuid = Uuid::v4();
+        
+        return $uuid->toRfc4122() . '-' . $filename;        
     }
 }

@@ -47,4 +47,12 @@ class FileUploadRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function save(FileUpload $upload): int
+    {
+        $this->_em->persist($upload);
+        $this->_em->flush();
+
+        return $upload->getId();
+    }
 }

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=FileUploadRepository::class)
+ * @ORM\Table(name="`file_upload`")
  */
 class FileUpload
 {
