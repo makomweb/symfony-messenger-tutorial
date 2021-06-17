@@ -116,3 +116,10 @@ You can start a docker container with `docker-compose up -d`.
 
 After the container is up you can access the webfrontend via
 http://guest:guest@localhost:15672.
+
+---
+
+# Fileupload
+
+- [File upload](https://symfony.com/doc/current/controller/upload_file.html)
+- [CSRF](https://symfony.com/doc/current/security/csrf.html)
