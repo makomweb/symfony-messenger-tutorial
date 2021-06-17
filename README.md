@@ -123,3 +123,8 @@ http://guest:guest@localhost:15672.
 
 - [File upload](https://symfony.com/doc/current/controller/upload_file.html)
 - [CSRF](https://symfony.com/doc/current/security/csrf.html)
+
+# Migrations
+
+- `php bin/console make:migration`
+- `php bin/console doctrine:migrations:migrate`
