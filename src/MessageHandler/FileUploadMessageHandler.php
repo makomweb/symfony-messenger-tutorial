@@ -41,7 +41,7 @@ class FileUploadMessageHandler implements MessageHandlerInterface
             $this->resizer->resize($path);
 
             // update status
-            $entity->setStatus("handled");
+            $entity->setStatus("resized");
             $this->repository->save($entity);
         }
 

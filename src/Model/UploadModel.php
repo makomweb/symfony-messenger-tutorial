@@ -19,13 +19,23 @@ class UploadModel
 
     public function getName() : string {
 
-        return $this->path_parts['filename'] . '.' . $this->path_parts['extension'];
+        $sample = '74fdee1b-ddf7-4f81-a56a-8b1ae6fa4a79-';
+
+        $name = substr($this->path_parts['filename'], strlen($sample));
+
+        return $name . '.' . $this->path_parts['extension'];
     }
 
     public function getStatus() : string {
 
         return $this->entity->getStatus();
     }
+    
+    public function getDownload() : string {
+
+        return $this->path_parts['filename'] . '.' . $this->path_parts['extension'];
+    }
+
     public function getThumbnail() : string {
 
         return $this->path_parts['filename'] . '.thumbnail.' . $this->path_parts['extension'];

@@ -88,7 +88,7 @@ class FileUploadController extends AbstractController
         {
             $upload = new FileUpload();
             $upload->setName($filename);
-            $upload->setStatus("initial");
+            $upload->setStatus("uploaded");
             $id = $this->repository->save($upload);
             $this->bus->dispatch(new FileUploadMessage($id));
         }

@@ -23,16 +23,16 @@
                     <td>{{ upload.id }}</td>
                     <td>{{ upload.name }}</td>
                     <td>
-                    {% if upload.status == "initial" %}
+                    {% if upload.status == "uploaded" %}
                         <span class="badge badge-warning">{{ upload.status }}</span>
-                    {% elseif upload.status == "handled" %}                
+                    {% elseif upload.status == "resized" %}                
                         <span class="badge badge-success">{{ upload.status }}</span>
                     {% else %}                
                         <span class="badge badge-primary">{{ upload.status }}</span>
                     {% endif %}
                     </td>
                     <td>
-                        <a href="{{ asset('uploads/') }}{{ upload.name }}" class="btn btn-outline-primary btn-sm mr-2">Original</a>                        
+                        <a href="{{ asset('uploads/') }}{{ upload.download }}" class="btn btn-outline-primary btn-sm mr-2">Original</a>                        
                         <a href="{{ asset('uploads/') }}{{ upload.thumbnail }}" class="btn btn-outline-primary btn-sm">Thumbnail</a>
                     </td>
                 </tr>
