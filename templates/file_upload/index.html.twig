@@ -32,7 +32,7 @@
                     {% endif %}
                     </td>
                     <td>
-                        <a href="{{ path('clear-uploads') }}" class="btn btn-outline-primary btn-sm">Download</a>
+                        <a href="{{ asset('uploads/') }}{{ upload.name }}" class="btn btn-outline-primary btn-sm">Download</a>
                     </td>
                 </tr>
                 {% endfor %}
