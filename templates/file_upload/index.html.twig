@@ -32,7 +32,8 @@
                     {% endif %}
                     </td>
                     <td>
-                        <a href="{{ asset('uploads/') }}{{ upload.name }}" class="btn btn-outline-primary btn-sm">Download</a>
+                        <a href="{{ asset('uploads/') }}{{ upload.name }}" class="btn btn-outline-primary btn-sm mr-2">Original</a>                        
+                        <a href="{{ asset('uploads/') }}{{ upload.thumbnail }}" class="btn btn-outline-primary btn-sm">Thumbnail</a>
                     </td>
                 </tr>
                 {% endfor %}

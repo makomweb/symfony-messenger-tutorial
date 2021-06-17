@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\FileUpload;
+use App\Model\UploadModel;
 use App\Message\FileUploadMessage;
 use App\Repository\FileUploadRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,15 +34,22 @@ class FileUploadController extends AbstractController
         $this->bus = $bus;
     }
 
+    public function toModel(FileUpload $upload) : UploadModel
+    {
+        return new UploadModel($upload);
+    }
+
     /**
      * @Route("/upload", name="upload")
      */
     public function index()
     {
-        $uploads = $this->repository->findAll();
+        $entities = $this->repository->findAll();
+
+        $models = array_map('self::toModel', $entities);
 
         return $this->render('file_upload/index.html.twig', [
-            'uploads' => $uploads,
+            'uploads' => $models,
         ]);
     }
 

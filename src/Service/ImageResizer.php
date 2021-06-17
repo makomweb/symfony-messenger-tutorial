@@ -40,6 +40,6 @@ class ImageResizer
     {
         $path_parts = pathinfo($filename);
 
-        return $path_parts['dirname'] . '/' . $path_parts['filename'] . '-thumbnail.' . $path_parts['extension'];
+        return $path_parts['dirname'] . '/' . $path_parts['filename'] . '.thumbnail.' . $path_parts['extension'];
     }
 }
