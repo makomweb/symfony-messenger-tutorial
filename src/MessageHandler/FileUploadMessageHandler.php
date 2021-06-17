@@ -27,9 +27,8 @@ class FileUploadMessageHandler implements MessageHandlerInterface
     
     public function __invoke(FileUploadMessage $message)
     {
-        //echo 'File upload received: ' . $message->getId();
-
-        sleep(2);
+        // Fake being busy - resizing is very fast.
+        sleep(2); // 2 s
 
         // fetch entity
         $entity = $this->repository->find($message->getId());
@@ -37,8 +36,6 @@ class FileUploadMessageHandler implements MessageHandlerInterface
         if ($entity)
         {
             $path = $this->uploadDir . '/' . $entity->getName();
-
-            //echo "Start resizing for: " . $path;
 
             $this->resizer->resize($path);
 
