@@ -24,7 +24,7 @@
                     <td>
                     {% if upload.status == "initial" %}
                         <span class="badge badge-warning">{{ upload.status }}</span>
-                    {% elseif order.status == "handled" %}                
+                    {% elseif upload.status == "handled" %}                
                         <span class="badge badge-success">{{ upload.status }}</span>
                     {% else %}                
                         <span class="badge badge-primary">{{ upload.status }}</span>
