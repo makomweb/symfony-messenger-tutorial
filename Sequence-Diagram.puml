@@ -1,0 +1,35 @@
+@startuml
+
+header
+Jun-16-2021
+endheader
+
+title Upload an Image order
+
+autonumber
+
+activate Browser
+activate Symfony_App
+activate Repository
+activate Message_Bus
+activate Worker
+
+Browser -> Symfony_App : upload image
+
+Symfony_App -> Symfony_App : persist image locally
+
+Symfony_App -> Repository: store image info
+
+Repository -> Symfony_App: id
+
+Symfony_App -> Browser: upload finished
+
+Symfony_App -> Message_Bus: publish message (id)
+
+Worker <- Message_Bus: consume message (id)
+
+Worker -> Worker: resize image (id))
+
+Worker -> Repository: resize finished (id)
+
+@enduml

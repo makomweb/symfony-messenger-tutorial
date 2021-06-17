@@ -1,6 +1,6 @@
 # Tutorial for using the Symfony Messenger component
 
-![image](sequence-diagram-handle-order.png)
+![image](Sequence-Diagram.png)
 
 ## Steps
 
