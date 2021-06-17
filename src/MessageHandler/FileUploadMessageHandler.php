@@ -28,7 +28,7 @@ class FileUploadMessageHandler implements MessageHandlerInterface
     public function __invoke(FileUploadMessage $message)
     {
         // Fake being busy - resizing is very fast.
-        sleep(2); // 2 s
+        //sleep(2); // 2 s
 
         // fetch entity
         $entity = $this->repository->find($message->getId());
