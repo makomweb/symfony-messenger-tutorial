@@ -55,4 +55,14 @@ class FileUploadRepository extends ServiceEntityRepository
 
         return $upload->getId();
     }
+    
+    public function removeUploads(array $uploads)
+    {
+        foreach ($uploads as $upload)
+        {
+            $this->_em->remove($upload);
+        }
+        
+        $this->_em->flush();
+    }
 }

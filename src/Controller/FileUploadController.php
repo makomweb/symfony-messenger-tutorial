@@ -82,6 +82,18 @@ class FileUploadController extends AbstractController
         return $this->redirectToRoute('upload');
     }
 
+    /**
+     * @Route("/clear-uploads", name="clear-uploads")
+     */
+    public function clearUploads()
+    {
+        $uploads = $this->repository->findAll();
+
+        $this->repository->removeUploads($uploads);
+
+        return $this->redirectToRoute('upload');
+    }
+
     private function getUniqueFileName(string $filename) {
 
         $uuid = Uuid::v4();
