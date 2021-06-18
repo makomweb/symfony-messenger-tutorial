@@ -65,7 +65,7 @@ Your app is running locally under [http://guest:guest@127.0.0.1:15672](http://gu
 ~~~bash
 > composer req maker --dev
 > composer req annotations
-> symfony console make:controller OrderController
+> symfony console make:controller FileUploadController
 ~~~
 
 ## Configure an async transport
@@ -79,7 +79,7 @@ Your app is running locally under [http://guest:guest@127.0.0.1:15672](http://gu
 > composer require --dev symfony/maker-bundle
 ~~~
 
-## Create a new entity "Order"
+## Create a new entity "FileUpload"
 
 ~~~bash
 > php bin/console make:entity
@@ -97,7 +97,7 @@ php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 ~~~
 
-## Show orders
+## Show file uploads
 
 ~~~bash
 # to install TWIG view rendering engine
