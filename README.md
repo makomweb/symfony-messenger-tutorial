@@ -2,6 +2,10 @@
 
 ![image](Sequence-Diagram.png)
 
+![image](Screenshot-App.png)
+
+![image](Screenshot-RabbitMQ.png)
+
 ## Steps
 
 ### 1. Clone the repo
